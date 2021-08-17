@@ -2,24 +2,27 @@
 
 /**Example Task : processFirstItem()
  * This example shows how you might go about solving the rest of the tasks
- * 
+ *
  * Use the higher order function processFirstItem below to do the following:
  *  1. Receive an array of strings in a parameter
  *  2. Receive a callback function that takes a string as its argument in a parameter
- *  3. Return the result of invoking the callback function and passing in the FIRST 
+ *  3. Return the result of invoking the callback function and passing in the FIRST
  *     element in the array as the argument
- * 
+ *
  * The following code is demonstrating a way of completing this task
  * It returns the string `foofoo`
-*/
+ */
 
 function processFirstItem(stringList, callback) {
-  return callback(stringList[0])
+  return callback(stringList[0]);
 }
-console.log(processFirstItem(['foo','bar'],function(str){return str+str}));
+console.log(
+  processFirstItem(["foo", "bar"], function (str) {
+    return str + str;
+  })
+);
 
 // ⭐️ Example Challenge END ⭐️
-
 
 ///// M V P ///////
 
@@ -37,12 +40,16 @@ console.log(processFirstItem(['foo','bar'],function(str){return str+str}));
 
 // counter1 code
 function counterMaker() {
+  // set count to 0
   let count = 0;
+  // return the result of the counter() function
   return function counter() {
-   return count++;
-  }
+    // which is to add one to count
+    return count++;
+  };
 }
 
+// counter1 is the result of calling counterMaker, which calls counter, which just adds one to a counter...
 const counter1 = counterMaker();
 
 // counter2 code
@@ -51,7 +58,6 @@ let count = 0;
 function counter2() {
   return count++;
 }
-
 
 /* ⚾️⚾️⚾️ Task 2: inning() ⚾️⚾️⚾️
 Use the inning function below to do the following:
@@ -62,10 +68,9 @@ Use the inning function below to do the following:
 NOTE: This will be a callback function for the tasks below
 */
 
-function inning(/*Code Here*/){
-    /*Code Here*/
+function inning() {
+  return Math.floor(Math.random() * 3);
 }
-
 
 /* ⚾️⚾️⚾️ Task 3: finalScore() ⚾️⚾️⚾️
 Use the finalScore function below to do the following:
@@ -79,10 +84,17 @@ Use the finalScore function below to do the following:
   "Home": 11,
   "Away": 5
 }
-*/ 
+*/
 
-function finalScore(/*code Here*/){
-  /*Code Here*/
+function finalScore(fn, innings) {
+  const finalScore = {
+    Home:0,
+    Away:0,
+  };
+  for (let i=0;i>=innings;i++) {
+    finalScore.Home+=fn();
+    finalScore.Away+=fn()}
+  return finalScore; 
 }
 
 /* ⚾️⚾️⚾️ Task 4: getInningScore() ⚾️⚾️⚾️
@@ -90,10 +102,9 @@ Use the getInningScore() function below to do the following:
   1. Receive a callback function - you will pass in the inning function from task 2 as your argument 
   2. Return an object with a score for home and a score for away that populates from invoking the inning callback function */
 
-function getInningScore(/*Your Code Here */) {
-  /*Your Code Here */
+function getInningScore(innings) {
+  return {Home:innings(),Away:innings()}
 }
-
 
 /* ⚾️⚾️⚾️ Task 5: scoreboard() ⚾️⚾️⚾️
 Use the scoreboard function below to do the following:
@@ -136,17 +147,17 @@ Use the scoreboard function below to do the following:
 ]  
   */
 
-function scoreboard(/* CODE HERE */) {
-  /* CODE HERE */
+function scoreboard(getInningScore,getScore,innings) {
+  for (let i=0;i<=innings;i++){
+    return getInningScore();
+  }
 }
 
 
-
-
 /* 🛑🛑🛑🛑🛑 Please do not modify anything below this line 🛑🛑🛑🛑🛑 */
-function foo(){
-  console.log('its working');
-  return 'bar';
+function foo() {
+  console.log("its working");
+  return "bar";
 }
 foo();
 module.exports = {
@@ -158,4 +169,4 @@ module.exports = {
   finalScore,
   getInningScore,
   scoreboard,
-}
+};
